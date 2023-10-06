@@ -91,8 +91,9 @@ Since the field data is provided by commercial companies, it is not convenient t
 The readsegy function can be modified based on your own data. Any other users confused about this function can contact the author directly.
 ```
 
-###Citation
+## Citation
 If you use this code for your research, please consider citing:
+```
 @article{meng2022seismic,
   title={Seismic random noise attenuation based on non-IID pixel-wise Gaussian noise modeling},
   author={Meng, Chuangji and Gao, Jinghuai and Tian, Yajun and Wang, Zhiqiang},
@@ -102,7 +103,7 @@ If you use this code for your research, please consider citing:
   year={2022},
   publisher={IEEE}
 }
-
+```
 ## Contact
 If you have any problem about our code, feel free to contact 
 - 4120105144@stu.edu.xjtu.cn

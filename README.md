@@ -1,5 +1,4 @@
 # VI-Non-IID
-# Power by Chuangji Meng 2022-5-11
 # Requirements and Dependencies
 * Ubuntu 16.04, cuda 10.0
 * Python 3.6, Pytorch 1.1.0

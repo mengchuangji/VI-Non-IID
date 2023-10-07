@@ -50,7 +50,7 @@
     python train_NonIID-DnCNN_with_LabeledSample.py --SIDD_dir sidd_data_path --eps2 1e-6
 ```
 
-### Testing    During the testing phase, we provide the corresponding trained model.
+### During the testing phase, we provide the corresponding trained model.
 
 ### Testing VI-Non-IID model if the reference clean label of test data is unvailable
 Here, test your arbitrary data. Our model can simultaneously output noise attenuation results and corresponding noise level estimation (sigma) map.

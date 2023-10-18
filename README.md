@@ -15,6 +15,7 @@
         "http://s3.amazonaws.com/open.source.geoscience/open_data/bptti2007/Anisotropic_FD_Model_Shots_part1.sgy.gz",
         "https://s3.amazonaws.com/open.source.geoscience/open_data/hessvti/timodel_shot_data_II_shot001-320.segy.gz",
         "http://s3.amazonaws.com/open.source.geoscience/open_data/Mobil_Avo_Viking_Graben_Line_12/seismic.segy")
+More detail about generating sample data from .segy seismic data for deep learning based on pytorch (see [python_segy](https://github.com/sevenysw/python_segy)).
 
 ## Generating training data
 ### 

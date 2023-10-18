@@ -3,6 +3,7 @@
 * Ubuntu 16.04, cuda 10.0
 * Python 3.6, Pytorch 1.1.0
 * More detail (See environment.yml)
+* Training and testing can also be performed on Windows systems.
 
 ## Datasets
 - you own **.segy** or **.sgy** seismic data or you can download some **.segy** or **.sgy** data online by the code we provide

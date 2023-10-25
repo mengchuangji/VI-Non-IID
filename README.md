@@ -54,7 +54,7 @@
 
 ### During the testing phase, we provide the corresponding trained model.
 
-### Testing VI-Non-IID model if the reference clean label of test data is unvailable
+### Testing VI-Non-IID model if the reference clean label of test data is unavailable
 Here, test your arbitrary data. Our model can simultaneously output noise attenuation results and corresponding noise level estimation (sigma) map.
 ```
     # you can choose NonIID-Unet (recommended) or  NonIID-DnCNN

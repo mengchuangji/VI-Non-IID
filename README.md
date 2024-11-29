@@ -1,9 +1,9 @@
-# VI-Non-IID
-# Power by Chuangji Meng 2021-5-11
+# Seismic random noise attenuation based on non-IID pixel-wise Gaussian noise modeling
 # Requirements and Dependencies
 * Ubuntu 16.04, cuda 10.0
 * Python 3.6, Pytorch 1.1.0
 * More detail (See environment.yml)
+* Training and testing can also be performed on Windows systems.
 
 ## Schematic diagram of the VI-non-IID framework
 ![VI-Non-IID](assets/VI-Non-IID.png)
@@ -27,6 +27,7 @@ At the same time, VI-non-IID is also a blind deep denoiser tailored for seismic 
         "http://s3.amazonaws.com/open.source.geoscience/open_data/bptti2007/Anisotropic_FD_Model_Shots_part1.sgy.gz",
         "https://s3.amazonaws.com/open.source.geoscience/open_data/hessvti/timodel_shot_data_II_shot001-320.segy.gz",
         "http://s3.amazonaws.com/open.source.geoscience/open_data/Mobil_Avo_Viking_Graben_Line_12/seismic.segy")
+- More detail about generating sample data from .segy seismic data for deep learning based on pytorch (see [python_segy](https://github.com/sevenysw/python_segy)).
 
 ## Generating training data
 ### 
@@ -62,7 +63,9 @@ At the same time, VI-non-IID is also a blind deep denoiser tailored for seismic 
     python train_NonIID-DnCNN_with_LabeledSample.py --SIDD_dir sidd_data_path --eps2 1e-6
 ```
 
-### Testing VI-Non-IID model if the reference clean label of test data is unvailable
+### During the testing phase, we provide the corresponding trained model.
+
+### Testing VI-Non-IID model if the reference clean label of test data is unavailable
 Here, test your arbitrary data. Our model can simultaneously output noise attenuation results and corresponding noise level estimation (sigma) map.
 ```
     # you can choose NonIID-Unet (recommended) or  NonIID-DnCNN
@@ -101,9 +104,9 @@ Since the field data is provided by commercial companies, it is not convenient t
 ```
 The readsegy function can be modified based on your own data. Any other users confused about this function can contact the author directly.
 ```
-
-###Citation
+## Citation
 If you use this code for your research, please consider citing:
+```    
 @article{meng2022seismic,
   title={Seismic random noise attenuation based on non-IID pixel-wise Gaussian noise modeling},
   author={Meng, Chuangji and Gao, Jinghuai and Tian, Yajun and Wang, Zhiqiang},
@@ -113,6 +116,8 @@ If you use this code for your research, please consider citing:
   year={2022},
   publisher={IEEE}
 }
+    
+```
 
 ## Contact
 If you have any problem about our code, feel free to contact 

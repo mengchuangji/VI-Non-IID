@@ -5,6 +5,17 @@
 * Python 3.6, Pytorch 1.1.0
 * More detail (See environment.yml)
 
+## Schematic diagram of the VI-non-IID framework
+![VI-Non-IID](assets/VI-Non-IID.png)
+VI-non-IID framework
+![VI-non-IID-output](assets/VI-non-IID-output.png)
+The input and output of VI-non-IID. 
+
+**Note**:
+----------------------------------------------------------------------------------------
+The predicted noise level map is very useful for analyzing the characteristics of the field seismic noise. Feel free to try it, it's very easy. Users can also use it to directly estimate the noise level of their own data, which is an important parameter for some denoising or noisy inversion algorithms, see [PS-SGMs](https://github.com/mengchuangji/PS-SGMs-seismic) for an example.
+At the same time, VI-non-IID is also a blind deep denoiser tailored for seismic data, so it can also provide denoiser priors (of seismic data) for some algorithms that require the addition of seismic data priors, see [SRNGF](https://github.com/mengchuangji/SRNGF) for an example.
+
 ## Datasets
 - you own **.segy** or **.sgy** seismic data or you can download some **.segy** or **.sgy** data online by the code we provide
 - you can use the Marmousi model to calculate the reflection coefficients, then we use reflection coefficients and the Ricker wavelet with a different dominant frequency(e.g. 35Hz) and different phase(e.g. 0) to synthesize the clean data of the training set.

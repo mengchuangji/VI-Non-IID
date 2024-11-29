@@ -6,9 +6,9 @@
 * Training and testing can also be performed on Windows systems.
 
 ## Schematic diagram of the VI-non-IID framework
-![VI-Non-IID](assets/VI-Non-IID.png)
+![VI-Non-IID](assets/VI_Non_IID.png)
 VI-non-IID framework
-![VI-non-IID-output](assets/VI-non-IID-output.png)
+![VI-non-IID-output](assets/VI_non_IID_output.png)
 The input and output of VI-non-IID. 
 
 **Note**:

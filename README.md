@@ -17,8 +17,8 @@ The input and output of VI-non-IID.
 
 **Note**:
 ----------------------------------------------------------------------------------------
-The predicted noise level map is very useful for analyzing the characteristics of the field seismic noise. Feel free to try it, it's very easy. Users can also use it to directly estimate the noise level of their own data, which is an important parameter for some denoising or noisy inversion algorithms, see [PS-SGMs](https://github.com/mengchuangji/PS-SGMs-seismic) for an example.
-At the same time, VI-non-IID is also a blind deep denoiser tailored for seismic data, so it can also provide denoiser priors (of seismic data) for some algorithms that require the addition of seismic data priors, see [SRNGF](https://github.com/mengchuangji/SRNGF) for an example.
+***The predicted noise level map is very useful for analyzing the characteristics of the field seismic noise***. Feel free to try it, it's very easy. Users can also use it to directly estimate the noise level of their own data, which is an important parameter for some denoising or noisy inversion algorithms, see [PS-SGMs](https://github.com/mengchuangji/PS-SGMs-seismic) for an example.
+At the same time, VI-non-IID is also a blind deep denoiser tailored for seismic data, so it can also ***provide denoiser priors (of seismic data) for some algorithms*** that require the seismic data priors, see [SRNGF](https://github.com/mengchuangji/SRNGF) for an example.
 
 ## Datasets
 - you own **.segy** or **.sgy** seismic data or you can download some **.segy** or **.sgy** data online by the code we provide

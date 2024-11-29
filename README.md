@@ -8,7 +8,7 @@
 ## Schematic diagram of the VI-non-IID framework
 VI-non-IID framework
 
-![VI-Non-IID](assets/VI_Non_IID.png)
+![VI-Non-IID](assets/VI_non_IID.png)
 
 The input and output of VI-non-IID.
 

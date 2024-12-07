@@ -39,8 +39,8 @@ class BenchmarkTrain(BaseDataSetH5):
         if self.noise_estimate:
             sigma2_map_est = sigma_estimate(im_noisy, im_gt, self.win, self.sigma_spatial)
 
-        im_gt = torch.from_numpy(im_gt.transpose((2, 0, 1)))
-        im_noisy = torch.from_numpy(im_noisy.transpose((2, 0, 1)))
+        im_gt = torch.from_numpy(im_gt.transpose((2, 0, 1))).to(dtype=torch.float32)
+        im_noisy = torch.from_numpy(im_noisy.transpose((2, 0, 1))).to(dtype=torch.float32)
         eps2 = torch.tensor([self.eps2], dtype=torch.float32).reshape((1,1,1))
 
         if self.noise_estimate:
@@ -61,8 +61,8 @@ class BenchmarkTest(BaseDataSetH5):
         # im_gt = img_as_float(im_gt)  #mcj  数据变为了float64
         # im_noisy = img_as_float(im_noisy)
 
-        im_gt = torch.from_numpy(im_gt.transpose((2, 0, 1)))
-        im_noisy = torch.from_numpy(im_noisy.transpose((2, 0, 1)))
+        im_gt = torch.from_numpy(im_gt.transpose((2, 0, 1))).to(dtype=torch.float32)
+        im_noisy = torch.from_numpy(im_noisy.transpose((2, 0, 1))).to(dtype=torch.float32)
 
         return im_noisy, im_gt
 

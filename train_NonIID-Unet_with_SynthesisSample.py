@@ -95,7 +95,7 @@ def train_model(net, datasets, optimizer, lr_scheduler, criterion):
             loss_per_epoch['KLIG'] += kl_Igam.item() / num_iter_epoch[phase]
             im_denoise = im_noisy-phi_Z[:, :_C, ].detach().data
             mse = F.mse_loss(im_denoise, im_gt)
-            im_denoise.clamp_(0.0, 1.0)
+            im_denoise.clamp_(-1.0, 1.0)
             mse_per_epoch[phase] += mse
             if (ii+1) % args.print_freq == 0:
                 log_str = '[Epoch:{:>2d}/{:<2d}] {:s}:{:0>4d}/{:0>4d}, lh={:+4.2f}, ' + \
@@ -148,7 +148,7 @@ def train_model(net, datasets, optimizer, lr_scheduler, criterion):
                 with torch.set_grad_enabled(False):
                     phi_Z, phi_sigma = net(im_noisy, 'train')
 
-                im_denoise = torch.clamp(im_noisy-phi_Z[:, :_C, ].detach().data, 0.0, 1.0)
+                im_denoise = torch.clamp(im_noisy-phi_Z[:, :_C, ].detach().data, -1.0, 1.0)
                 mse = F.mse_loss(im_denoise, im_gt)
                 mse_per_epoch[phase] += mse
                 psnr_iter = batch_PSNR(im_denoise, im_gt)

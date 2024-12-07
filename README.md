@@ -1,9 +1,4 @@
 # Seismic random noise attenuation based on non-IID pixel-wise Gaussian noise modeling
-# Requirements and Dependencies
-* Ubuntu 16.04, cuda 10.0
-* Python 3.6, Pytorch 1.1.0
-* More detail (See environment.yml)
-* Training and testing can also be performed on Windows systems.
 
 ## Schematic diagram of the VI-non-IID framework
 VI-non-IID framework

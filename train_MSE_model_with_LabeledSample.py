@@ -166,9 +166,9 @@ if __name__ == '__main__':
 
     args.siesmic_dir = '/home/shendi_mcj/datasets/seismic/marmousi/marmousi20'
     # train dataset
-    path_SIDD_train = os.path.join(args.siesmic_dir, 'small_seismic_train_from_mat.hdf5')
+    path_Seis_train = os.path.join(args.siesmic_dir, 'small_seismic_train_from_mat.hdf5')
 
-    datasets = {'train': DenoisingDatasets_seismic.BenchmarkTrain(path_SIDD_train, 57834,
+    datasets = {'train': DenoisingDatasets_seismic.BenchmarkTrain(path_Seis_train, 57834,
                                                                         args.patch_size, radius=args.radius, eps2=args.eps2, noise_estimate=False),
                 'test_case1': DenoisingDatasets_seismic.SimulateTest(test_im_list, test_case1_h5),
                 'test_case2': DenoisingDatasets_seismic.SimulateTest(test_im_list, test_case2_h5),
@@ -220,7 +220,7 @@ if __name__ == '__main__':
 
             im_denoise = out_denoise.detach().data
             mse = F.mse_loss(im_denoise, im_gt)
-            im_denoise.clamp_(0.0, 1.0)
+            im_denoise.clamp_(-1.0, 1.0)
             mse_per_epoch[phase] += mse
             if (n_count + 1) % args.print_freq == 0:
                 log_str = '[Epoch:{:>2d}/{:<2d}] {:s}:{:0>4d}/{:0>4d}, mse={:.2e}, lr={:.1e}'
@@ -240,7 +240,7 @@ if __name__ == '__main__':
                 im_noisy, im_gt = [x.cuda() for x in data]
                 with torch.set_grad_enabled(False):
                     out_denoise = model(im_noisy)
-                im_denoise = torch.clamp(out_denoise, 0.0, 1.0)
+                im_denoise = torch.clamp(out_denoise, -1.0, 1.0)
                 mse = F.mse_loss(im_denoise, im_gt)
                 mse_per_epoch[phase] += mse
                 psnr_iter = batch_PSNR(im_denoise, im_gt)

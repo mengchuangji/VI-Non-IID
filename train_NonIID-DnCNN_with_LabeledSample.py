@@ -36,13 +36,13 @@ else:
     os.environ['CUDA_VISIBLE_DEVICES'] = ','.join(str(x) for x in list(args.gpu_id))
 
 _C = 1
-_modes = ['train', 'test_SIDD']
+_modes = ['train', 'test_Seis']
 _lr_min = 1e-6
 
 def train_model(net, datasets, optimizer, lr_scheduler, criterion):
     clip_grad_D = args.clip_grad_D
     clip_grad_S = args.clip_grad_S
-    batch_size = {'train':args.batch_size, 'test_SIDD':4}
+    batch_size = {'train':args.batch_size, 'test_Seis':4}
     data_loader = {phase:torch.utils.data.DataLoader(datasets[phase], batch_size=batch_size[phase],
          shuffle=True, num_workers=args.num_workers, pin_memory=True) for phase in _modes}
     num_data = {phase:len(datasets[phase]) for phase in _modes}
@@ -88,7 +88,7 @@ def train_model(net, datasets, optimizer, lr_scheduler, criterion):
             loss_per_epoch['KLG'] += kl_g.item() / num_iter_epoch[phase]
             loss_per_epoch['KLIG'] += kl_Igam.item() / num_iter_epoch[phase]
             im_denoise = im_noisy-phi_Z[:, :_C, ].detach().data
-            im_denoise.clamp_(0.0, 1.0)
+            im_denoise.clamp_(-1.0, 1.0)
             mse = F.mse_loss(im_denoise, im_gt)
             mse_per_epoch[phase] += mse
             if (ii+1) % args.print_freq == 0:
@@ -139,7 +139,7 @@ def train_model(net, datasets, optimizer, lr_scheduler, criterion):
                     phi_Z, phi_sigma = net(im_noisy, 'train')
 
                 im_denoise = im_noisy-phi_Z[:, :_C, ].data
-                im_denoise.clamp_(0.0, 1.0)
+                im_denoise.clamp_(-1.0, 1.0)
                 mse = F.mse_loss(im_denoise, im_gt)
                 mse_per_epoch[phase] += mse
                 psnr_iter = batch_PSNR(im_denoise, im_gt)
@@ -266,12 +266,12 @@ def main():
 
     args.siesmic_dir='/home/shendi_mcj/datasets/seismic/fielddata'
     # train dataset
-    path_SIDD_train = os.path.join(args.siesmic_dir, 'small_seismic_train.hdf5')
+    path_Seis_train = os.path.join(args.siesmic_dir, 'small_seismic_train.hdf5')
     # test dataset
-    path_SIDD_test = os.path.join(args.siesmic_dir, 'small_seismic_test.hdf5')
-    datasets = {'train':DenoisingDatasets_seismic.BenchmarkTrain(path_SIDD_train, 5000 * args.batch_size,
+    path_Seis_test = os.path.join(args.siesmic_dir, 'small_seismic_test.hdf5')
+    datasets = {'train':DenoisingDatasets_seismic.BenchmarkTrain(path_Seis_train, 5000 * args.batch_size,
                                                                  args.patch_size, radius=args.radius, eps2=args.eps2, noise_estimate=True),
-                                        'test_SIDD':DenoisingDatasets_seismic.BenchmarkTest(path_SIDD_test)}
+                                        'test_Seis':DenoisingDatasets_seismic.BenchmarkTest(path_Seis_test)}
     # train model
     print('\nBegin training with GPU: ' + str(args.gpu_id))
     train_model(net, datasets, optimizer, scheduler, loss_fn)

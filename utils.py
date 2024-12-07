@@ -69,18 +69,18 @@ def im2patch(im, pch_size, stride=1):
 def batch_PSNR(img, imclean):
     Img = img.data.cpu().numpy()
     Iclean = imclean.data.cpu().numpy()
-    Img = img_as_ubyte(Img)
-    Iclean = img_as_ubyte(Iclean)
+    # Img = img_as_ubyte(Img)
+    # Iclean = img_as_ubyte(Iclean)
     PSNR = 0
     for i in range(Img.shape[0]):
-        PSNR += peak_signal_noise_ratio(Iclean[i,:,:,:], Img[i,:,:,:], data_range=255)
+        PSNR += peak_signal_noise_ratio(Iclean[i,:,:,:], Img[i,:,:,:], data_range=2) #mcj
     return (PSNR/Img.shape[0])
 
 def batch_SSIM(img, imclean):
     Img = img.data.cpu().numpy()
     Iclean = imclean.data.cpu().numpy()
-    Img = img_as_ubyte(Img)
-    Iclean = img_as_ubyte(Iclean)
+    # Img = img_as_ubyte(Img)
+    # Iclean = img_as_ubyte(Iclean)
     SSIM = 0
     for i in range(Img.shape[0]):
         SSIM += ssim_index(Iclean[i,:,:,:].transpose((1,2,0)), Img[i,:,:,:].transpose((1,2,0)))

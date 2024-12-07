@@ -5,7 +5,7 @@
 import torch
 import torch.nn.functional as F
 from math import pi, log
-from seis_utils import LogGamma
+from utils import LogGamma
 from options import set_opts
 import numpy as np
 

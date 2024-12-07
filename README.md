@@ -1,7 +1,7 @@
 # Seismic random noise attenuation based on non-IID pixel-wise Gaussian noise modeling
 
 ## Schematic diagram of the VI-non-IID framework
-VI-non-IID framework
+VI-non-IID framework   
 
 ![VI-Non-IID](assets/VI_non_IID.png)
 

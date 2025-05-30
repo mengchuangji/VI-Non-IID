@@ -1,4 +1,4 @@
-# Seismic random noise attenuation based on non-IID pixel-wise Gaussian noise modeling
+# 2022 TGRS Seismic random noise attenuation based on non-IID pixel-wise Gaussian noise modeling
 
 ## Schematic diagram of the VI-non-IID framework
 VI-non-IID framework   
@@ -120,5 +120,5 @@ If you use this code for your research, please consider citing:
 
 ## Contact
 If you have any problem about our code, feel free to contact 
-- 4120105144@stu.edu.xjtu.cn
+- cjmeng@xjtu.edu.cn
 or describe your problem in Issues.
